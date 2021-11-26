@@ -36,7 +36,7 @@ jobs:
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
-          command: docker-compose run app python manage.py
+          command: docker-compose run python manage.py
 
 
 # Invoke jobs via workflows
