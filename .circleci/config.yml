@@ -20,6 +20,7 @@ jobs:
     # A list of available CircleCI Docker convenience images are available here: https://circleci.com/developer/images/image/cimg/python
     # The executor is the environment in which the steps below will be executed - below will use a python 3.8 container
     # Change the version below to your required version of python
+    working_directory: /app
     docker:
       - image: python:3.7-alpine
     # Checkout the code as the first step. This is a dedicated CircleCI step.
@@ -36,12 +37,10 @@ jobs:
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
-          command: python ../app/app/manage.py test && flake8
+          command: python manage.py test && flake8
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
-    jobs:
-      - build-and-test
+  jobs:
+    - build-and-test
