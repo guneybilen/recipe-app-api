@@ -30,10 +30,6 @@ jobs:
     # CircleCI will report the results back to your VCS provider.
     steps:
       - checkout
-      - run:
-          name: Install Python dependencies
-          command: |
-            pip install -r requirements.txt
       - python/install-packages:
           pkg-manager: pip
           # app-dir: ~/project/package-directory/  # If you're requirements.txt isn't in the root directory.
@@ -41,6 +37,9 @@ jobs:
 #      - run:
 #          name: Install docker-compose
 #          command: pip install docker-compose
+      - run:
+          name: Start all services declared in docker-compose.yml
+          command: docker-compose up -d
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
