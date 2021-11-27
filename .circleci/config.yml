@@ -30,10 +30,6 @@ jobs:
     # CircleCI will report the results back to your VCS provider.
     steps:
       - checkout
-      - setup_remote_docker
-          - run:
-          name: Does docker even exist
-          command: docker -v
       - python/install-packages:
           pkg-manager: pip
           # app-dir: ~/project/package-directory/  # If you're requirements.txt isn't in the root directory.
@@ -41,6 +37,10 @@ jobs:
 #      - run:
 #          name: Install docker-compose
 #          command: pip install docker-compose
+      - setup_remote_docker
+      - run:
+          name: Does docker even exist
+          command: docker -v
       - run:
           name: Build images of services declared in docker-compose.yml
           command: docker-compose build
