@@ -17,7 +17,7 @@ jobs:
       - run:
           name: Run django tests
           command: |
-            python manage.py test
+            pipenv python manage.py test
       - store_test_results:
           path: test-results
       - store_artifacts:
