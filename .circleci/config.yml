@@ -59,6 +59,20 @@ jobs:
 #            # the names of our services' containers would be prefixed with "circleci-demo-docker".
 #            docker-compose --project circleci-demo-docker up -d
       - run:
+          name: Install Python dependencies
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements
+      - run:
+          name: Add python project to path
+          command: 'echo "$(realpath .)/app" > venv/lib/python3.8.12/site-packages/app.pth'
+            - run:
+                name: Run tests
+                command: |
+                  . venv/bin/activate
+                  python manage.py test
+      - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
           # command: docker-compose run app sh -c "python manage.py test && flake8"
