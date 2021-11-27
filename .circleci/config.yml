@@ -40,7 +40,7 @@ jobs:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
           # command: docker-compose run app sh -c "python manage.py test && flake8"
-          command: docker-compose run project "python --version"
+          command: docker-compose run sh -c  "python --version"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
