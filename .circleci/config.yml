@@ -40,6 +40,8 @@ jobs:
 #          command: pip install docker-compose
       - run:
          command: pip install --upgrade pip
+      - run:
+          command: docker build .
       - setup_remote_docker
       - run:
           name: Does docker even exist
@@ -56,8 +58,6 @@ jobs:
 #            # Setting the Docker Compose project name to "circleci-demo-docker" means
 #            # the names of our services' containers would be prefixed with "circleci-demo-docker".
 #            docker-compose --project circleci-demo-docker up -d
-      - run:
-          command: docker build .
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
