@@ -51,6 +51,12 @@ jobs:
           name: Start all services declared in docker-compose.yml
           command: docker-compose up -d
       - run:
+          name: Start docker-compose and verify service(s)
+          command: |
+            # Setting the Docker Compose project name to "circleci-demo-docker" means
+            # the names of our services' containers would be prefixed with "circleci-demo-docker".
+            docker-compose --project circleci-demo-docker up -d
+      - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
           # command: docker-compose run app sh -c "python manage.py test && flake8"
