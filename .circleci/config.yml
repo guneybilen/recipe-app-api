@@ -61,9 +61,8 @@ jobs:
       - run:
           name: Install Python dependencies
           command: |
-            python3 -m venv venv
+            python -m venv venv
             . venv/bin/activate
-            pip install -r requirements
       - run:
           name: Add python project to path
           command: 'echo "$(realpath .)/app" > venv/lib/python3.8.12/site-packages/app.pth'
