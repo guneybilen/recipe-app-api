@@ -39,7 +39,9 @@ jobs:
 #          name: Install docker-compose
 #          command: pip install docker-compose
       - run:
-         command: pip install --upgrade pip
+          command: pip install --upgrade pip
+      - run:
+          command: pip install pipenv
       - setup_remote_docker
       - run:
           command: docker build .
@@ -58,10 +60,6 @@ jobs:
 #            # Setting the Docker Compose project name to "circleci-demo-docker" means
 #            # the names of our services' containers would be prefixed with "circleci-demo-docker".
 #            docker-compose --project circleci-demo-docker up -d
-      - run:
-          command: |  # use pipenv to install dependencies
-            sudo pip install pipenv
-            pipenv install
       - run:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
