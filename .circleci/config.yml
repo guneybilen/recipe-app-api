@@ -17,7 +17,7 @@ jobs:
       - run:
           name: Run django tests
           command: |
-            docker-compose app sh -c "python manage.py test"
+            docker-compose run app sh -c "python manage.py test"
       - store_test_results:
           path: test-results
       - store_artifacts:
