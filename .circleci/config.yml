@@ -40,9 +40,9 @@ jobs:
 #          command: pip install docker-compose
       - run:
          command: pip install --upgrade pip
+      - setup_remote_docker
       - run:
           command: docker build .
-      - setup_remote_docker
       - run:
           name: Does docker even exist
           command: docker -v
