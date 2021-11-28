@@ -1,2 +1,2 @@
 [flake8]
-exclude = .git,__pycache__,manage.py,settings.py
+exclude = .venv, .git, __pycache__, migrations, manage.py, settings.py
