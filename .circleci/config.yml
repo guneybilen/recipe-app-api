@@ -15,6 +15,7 @@ jobs:
       - checkout
       - python/install-packages
       - setup_remote_docker
+        docker_layer_caching: true
       - run:
           name: Build images of services declared in docker-compose.yml
           command: docker-compose build
