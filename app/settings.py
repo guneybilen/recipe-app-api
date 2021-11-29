@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'HOST': os.environ.get('DB_HOST', 'localhost'),
         'NAME': os.environ.get('DB_NAME', 'circle_test'),
-        'USER': os.environ.get('DB_USER'),
+        'USER': os.environ.get('DB_USER', 'root'),
         'PASSWORD': os.environ.get('DB_PASS'),
     }
 }
