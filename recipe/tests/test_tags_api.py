@@ -1,4 +1,4 @@
-from unittest import TestCase
+from django.test import TestCase
 
 from django.contrib.auth import get_user_model
 from django.urls import reverse
@@ -28,8 +28,8 @@ class PrivateTagsApiTests(TestCase):
     """Test the authorized user tags API"""
 
     def setUp(self):
-        self.user = get_user_model().objects.create(
-            'test1@test.com'
+        self.user = get_user_model().objects.create_user(
+            'test1@test.com',
             'password123'
         )
         self.client = APIClient()
@@ -50,11 +50,11 @@ class PrivateTagsApiTests(TestCase):
 
     def test_tags_limited_to_user(self):
         """Test that tags returned are for the authenticated user"""
-        self.user2 = get_user_model().objects.create(
-            'test2@test.com'
+        user2 = get_user_model().objects.create_user(
+            'test2@test.com',
             'password124'
         )
-        Tag.objects.create(user=self.user2, name='Fruity')
+        Tag.objects.create(user=user2, name='Fruity')
         tag = Tag.objects.create(user=self.user, name='Comfort Food')
 
         res = self.client.get(TAGS_URL)
